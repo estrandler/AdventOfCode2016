@@ -59,7 +59,7 @@ console.log('Which day do you want to solve?');
       case 23:
       case 24:
       default:
-        console.log('Level not solved yet!');
+        console.log('Level not solved yet!'); //Test compile
         break;
     }
   }

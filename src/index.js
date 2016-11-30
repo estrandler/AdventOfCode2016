@@ -51,7 +51,7 @@ function handleSelectedLevel() {
         case 23:
         case 24:
         default:
-            console.log('Level not solved yet!');
+            console.log('Level not solved yet!'); //Test compile
             break;
     }
 }
