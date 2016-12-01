@@ -13,10 +13,10 @@ prompt.get(['Level', 'Plus'], function (err, result) {
     if (err) {
         return onErr(err);
     }
-    selectedLevel = result.Level;
+    selectedLevel = parseInt(result.Level, 10);
     isPlusSelected = result.Plus === 'Y' || result.Plus === 'y';
     console.log('You chose:');
-    console.log('  Level: ' + selectedLevel);
+    console.log('  Level: ' + result.Level);
     console.log('  Plus: ' + isPlusSelected);
     handleSelectedLevel();
 });
@@ -27,6 +27,7 @@ function onErr(err) {
 function handleSelectedLevel() {
     switch (selectedLevel) {
         case 1:
+            LevelOne();
         case 2:
         case 3:
         case 4:
@@ -54,5 +55,9 @@ function handleSelectedLevel() {
             console.log('Level not solved yet!'); //Test compile
             break;
     }
+}
+function LevelOne() {
+    var lvl = new LevelOne();
+    lvl.solve();
 }
 //# sourceMappingURL=index.js.map
