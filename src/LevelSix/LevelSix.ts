@@ -4,7 +4,7 @@ class Level6 {
 mainArr: any[] = [];
 
 
-    constructor() {
+    constructor(isPlus: boolean) {
           var self = this;
           for(var i = 0; i < 8; i++){
             this.mainArr.push([]);
@@ -16,15 +16,16 @@ mainArr: any[] = [];
                 self.parseCharactersIntoRows(splitted);
                 self.sortByVal();
 
-                self.logResult();
+                self.logResult(isPlus);
         })
     }
 
-    logResult(): void {
+    logResult(isPlus: boolean): void {
         var output = '';
-
+        
         for(var i = 0; i < this.mainArr.length; i++){
-            output += this.mainArr[i][0].char;
+            var idx = isPlus ? (this.mainArr[i].length - 1) : 0;
+            output += this.mainArr[i][idx].char;
         }
 
         console.log('Result:', output);
@@ -52,12 +53,10 @@ mainArr: any[] = [];
                     if(this.mainArr[rowIdx][j].char === char){
                             isInArr = true;
                             isInArrIdx = j;
-                            console.log('arrinindex', this.mainArr[rowIdx][j].char === char)
                         }
                 }
 
                 if(isInArr){
-                    console.log('isinarr', this.mainArr[rowIdx][isInArrIdx]);
                     this.mainArr[rowIdx][isInArrIdx].value++;
                 } else {
                     this.mainArr[rowIdx].push({
@@ -70,4 +69,5 @@ mainArr: any[] = [];
     }
 }
 
-var lvl = new Level6();
+//var lvl = new Level6(false); for part one
+var lvl = new Level6(true);

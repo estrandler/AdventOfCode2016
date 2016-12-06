@@ -1,7 +1,7 @@
 "use strict";
 var fs = require('fs');
 var Level6 = (function () {
-    function Level6() {
+    function Level6(isPlus) {
         this.mainArr = [];
         var self = this;
         for (var i = 0; i < 8; i++) {
@@ -11,13 +11,14 @@ var Level6 = (function () {
             var splitted = data.split('\r\n');
             self.parseCharactersIntoRows(splitted);
             self.sortByVal();
-            self.logResult();
+            self.logResult(isPlus);
         });
     }
-    Level6.prototype.logResult = function () {
+    Level6.prototype.logResult = function (isPlus) {
         var output = '';
         for (var i = 0; i < this.mainArr.length; i++) {
-            output += this.mainArr[i][0].char;
+            var idx = isPlus ? (this.mainArr[i].length - 1) : 0;
+            output += this.mainArr[i][idx].char;
         }
         console.log('Result:', output);
     };
@@ -38,11 +39,9 @@ var Level6 = (function () {
                     if (this.mainArr[rowIdx][j].char === char) {
                         isInArr = true;
                         isInArrIdx = j;
-                        console.log('arrinindex', this.mainArr[rowIdx][j].char === char);
                     }
                 }
                 if (isInArr) {
-                    console.log('isinarr', this.mainArr[rowIdx][isInArrIdx]);
                     this.mainArr[rowIdx][isInArrIdx].value++;
                 }
                 else {
@@ -56,5 +55,6 @@ var Level6 = (function () {
     };
     return Level6;
 }());
-var lvl = new Level6();
+//var lvl = new Level6(false); for part one
+var lvl = new Level6(true);
 //# sourceMappingURL=LevelSix.js.map
