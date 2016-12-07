@@ -55,10 +55,6 @@ class ABBA {
                 currentString += char;
             }
         }
-
-        console.log('Parts IN', this.partsInClams);
-        console.log('Parts NOT IN', this.partsNotInClams);
-
     }
 
     supportsTLS() : boolean {

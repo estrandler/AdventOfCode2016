@@ -45,8 +45,6 @@ var ABBA = (function () {
                 currentString += char;
             }
         }
-        console.log('Parts IN', this.partsInClams);
-        console.log('Parts NOT IN', this.partsNotInClams);
     }
     ABBA.prototype.supportsTLS = function () {
         for (var i = 0; i < this.partsInClams.length; i++) {
