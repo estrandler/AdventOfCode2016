@@ -37,14 +37,16 @@ class ABBA {
 
         for(var i = 0; i < unparsedString.length; i++){
             var char = unparsedString[i];
+            var last = (i == unparsedString.length - 1);
 
-
-            if(char === '[' || char === ']'){
+            if(char === '[' || char === ']' || last){
                 if(isInClams){
+                    currentString = last ? currentString += char : currentString;
                     this.partsInClams.push(currentString);
                     currentString = '';
                     }
                 else {
+                    currentString = last ? currentString += char : currentString;
                     this.partsNotInClams.push(currentString);
                     currentString = '';
                 }
@@ -52,8 +54,10 @@ class ABBA {
             } else {
                 currentString += char;
             }
-            
         }
+
+        console.log('Parts IN', this.partsInClams);
+        console.log('Parts NOT IN', this.partsNotInClams);
 
     }
 

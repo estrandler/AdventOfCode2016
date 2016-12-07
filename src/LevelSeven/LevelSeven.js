@@ -27,12 +27,15 @@ var ABBA = (function () {
         var currentString = '';
         for (var i = 0; i < unparsedString.length; i++) {
             var char = unparsedString[i];
-            if (char === '[' || char === ']') {
+            var last = (i == unparsedString.length - 1);
+            if (char === '[' || char === ']' || last) {
                 if (isInClams) {
+                    currentString = last ? currentString += char : currentString;
                     this.partsInClams.push(currentString);
                     currentString = '';
                 }
                 else {
+                    currentString = last ? currentString += char : currentString;
                     this.partsNotInClams.push(currentString);
                     currentString = '';
                 }
@@ -42,6 +45,8 @@ var ABBA = (function () {
                 currentString += char;
             }
         }
+        console.log('Parts IN', this.partsInClams);
+        console.log('Parts NOT IN', this.partsNotInClams);
     }
     ABBA.prototype.supportsTLS = function () {
         for (var i = 0; i < this.partsInClams.length; i++) {
